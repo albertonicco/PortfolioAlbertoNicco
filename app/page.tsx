@@ -1,101 +1,157 @@
 import Image from "next/image";
+import Link from "next/link";
+import HomeStrip from "@/components/HomeStrip";
+import FullscreenButton from "@/components/FullscreenButton";
+import { films } from "@/data/films";
+import { VIDEO_URLS } from "@/data/videos";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const stripItems = films.map((f, i) => ({
+    slug: f.slug,
+    title: f.title,
+    year: f.year,
+    genre: f.genre,
+    poster: f.poster,
+    href: `/films/${f.slug}`,
+    index: i,
+  }));
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <>
+      {/* ── Hero Video — full viewport ── */}
+      <section
+        data-video-container
+        style={{ position: "relative", height: "100vh", overflow: "hidden" }}
+      >
+        <video
+          src={VIDEO_URLS.homeHero || "/videos/hero.mp4"}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.6) 100%)",
+          }}
+        />
+        <div style={{ position: "absolute", bottom: "2.5rem", left: "1.5rem" }}>
+          <h1
+            className="font-serif font-light"
+            style={{
+              fontSize: "clamp(3.5rem, 8vw, 8rem)",
+              letterSpacing: "-0.02em",
+              lineHeight: 0.95,
+              color: "#F5F0E8",
+              textShadow: "0 2px 24px rgba(0,0,0,0.9)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Alberto Nicco
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <FullscreenButton />
+      </section>
+
+      {/* ── Bio section ── */}
+      <section
+        className="grid grid-cols-1 md:grid-cols-[2fr_3fr] border-t"
+        style={{ borderColor: "#1A1A1A" }}
+      >
+        {/* Left — photo */}
+        <div
+          className="relative border-r"
+          style={{ borderColor: "#1A1A1A", minHeight: "400px" }}
         >
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/about/photo-home.jpg"
+            alt="Alberto Nicco"
+            fill
+            quality={100}
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 40vw"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
+        </div>
+
+        {/* Right — bio text + links */}
+        <div className="flex flex-col justify-between px-8 md:px-12 py-12 md:py-16">
+          <div>
+            <p
+              className="font-serif font-light text-fg mb-5"
+              style={{ fontSize: "20px", lineHeight: 1.9, maxWidth: "58ch" }}
+            >
+              Alberto Nicco is a director, screenwriter, and video editor based in Turin, Italy.
+              His path originates in cinema and documentary filmmaking, where he developed narrative
+              and aesthetic sensitivity, and has since expanded into the creation of video content
+              for brands and digital communication.
+            </p>
+            <p
+              className="font-serif font-light text-fg"
+              style={{ fontSize: "20px", lineHeight: 1.9, maxWidth: "58ch" }}
+            >
+              He focuses on the full post-production process, from editing and sound design to the
+              final visual look of the image — working across narrative cinema, documentary, and
+              video content for digital platforms.
+            </p>
+          </div>
+
+          <div className="mt-8 flex items-center gap-6">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="meta hover-magenta"
+            >
+              Instagram
+            </a>
+            <span className="meta" style={{ color: "#333" }}>·</span>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="meta hover-magenta"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Films horizontal magazine strip ── */}
+      <section className="border-t" style={{ borderColor: "#1A1A1A" }}>
+        <HomeStrip items={stripItems} />
+      </section>
+
+      {/* ── Footer ── */}
+      <footer
+        className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 md:px-10 py-5 border-t gap-4"
+        style={{ borderColor: "#1A1A1A" }}
+      >
+        <span className="meta">Alberto Nicco</span>
+        <nav className="flex flex-wrap items-center gap-6" aria-label="Footer navigation">
+          {[
+            { href: "/films", label: "Films" },
+            { href: "/videomaker", label: "Videomaker" },
+            { href: "/other", label: "Other" },
+            { href: "/about", label: "About" },
+            { href: "/contact", label: "Contact" },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} className="meta hover-magenta">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
       </footer>
-    </div>
+    </>
   );
 }

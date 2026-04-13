@@ -9,8 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg:           "#000000",
+        fg:           "#F5F0E8",
+        "fg-dim":     "#666666",
+        accent:       "#C8102E",
+        "accent-h":   "#E8005A",
+        border:       "#1A1A1A",
+      },
+      fontFamily: {
+        serif:  ["var(--font-cormorant)", "Georgia", "serif"],
+        mono:   ["var(--font-space-mono)", "'Courier New'", "monospace"],
+      },
+      fontSize: {
+        "13": "13px",
+        "12": "12px",
+        "11": "11px",
       },
     },
   },

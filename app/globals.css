@@ -2,26 +2,271 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design tokens ────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:        #000000;
+  --fg:        #F5F0E8;
+  --fg-dim:    #666666;
+  --accent:    #C8102E;
+  --accent-hover: #E8005A;
+  --border:    #1A1A1A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Reset ────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-cormorant), Georgia, serif;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* ── Typography ───────────────────────────────────────────────── */
+/* Display titles — Cormorant, weight 300 */
+.display {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-size: clamp(3.5rem, 10vw, 10rem);
+  color: var(--fg);
+}
+
+/* Section titles */
+.title {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  color: var(--fg);
+}
+
+/* Project title on detail page */
+.project-title {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  font-size: clamp(2.5rem, 7vw, 8rem);
+  color: var(--fg);
+}
+
+/* Body text — Cormorant, 18px */
+.body-text {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--fg);
+}
+
+/* Metadata — Space Mono, 12px */
+.meta {
+  font-family: var(--font-space-mono), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  line-height: 1.4;
+}
+
+.meta-accent {
+  font-family: var(--font-space-mono), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Carousel ─────────────────────────────────────────────────── */
+.carousel-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.carousel-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Borders & dividers ───────────────────────────────────────── */
+.border-dim {
+  border-color: var(--border);
+}
+
+/* ── Hover transitions ────────────────────────────────────────── */
+.hover-magenta {
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-magenta:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Nav link ─────────────────────────────────────────────────── */
+.nav-item {
+  font-family: var(--font-space-mono), 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-item:hover,
+.nav-item.active {
+  color: var(--fg);
+}
+
+/* ── Page transition ──────────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Film row hover ───────────────────────────────────────────── */
+.film-row {
+  transition: none;
+}
+.film-row:hover .film-row-title {
+  color: var(--accent-hover);
+}
+.film-row:hover .film-row-arrow {
+  transform: translateX(4px);
+}
+.film-row-arrow {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Stills horizontal gallery ────────────────────────────────── */
+.stills-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+.stills-track:active {
+  cursor: grabbing;
+}
+.stills-track::-webkit-scrollbar {
+  display: none;
+}
+.still-item {
+  flex: none;
+  height: 500px;
+  width: auto;
+  display: block;
+}
+
+/* ── Skeleton shimmer ─────────────────────────────────────────── */
+.skeleton {
+  background: #111;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 240, 232, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Custom cursor ────────────────────────────────────────────── */
+body {
+  cursor: none;
+}
+input, textarea, select {
+  cursor: text;
+}
+
+/* ── Neon pulse animations ────────────────────────────────────── */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 4px #C8102E,
+      0 0 10px #C8102E,
+      0 0 20px rgba(200, 16, 46, 0.31),
+      inset 0 0 4px rgba(200, 16, 46, 0.12);
   }
+  50% {
+    box-shadow:
+      0 0 10px #C8102E,
+      0 0 30px #C8102E,
+      0 0 60px rgba(200, 16, 46, 0.44),
+      0 0 90px rgba(200, 16, 46, 0.19),
+      inset 0 0 8px rgba(200, 16, 46, 0.19);
+  }
+}
+
+@keyframes neonPulseMagenta {
+  0%, 100% {
+    box-shadow:
+      0 0 4px #E8005A,
+      0 0 10px #E8005A,
+      0 0 20px rgba(232, 0, 90, 0.31),
+      inset 0 0 4px rgba(232, 0, 90, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 10px #E8005A,
+      0 0 30px #E8005A,
+      0 0 60px rgba(232, 0, 90, 0.44),
+      0 0 90px rgba(232, 0, 90, 0.19),
+      inset 0 0 8px rgba(232, 0, 90, 0.19);
+  }
+}
+
+.neon-pulse {
+  border: 1px solid #C8102E;
+  animation: neonPulse 4s ease-in-out infinite;
+}
+
+/* ── Film strip card hover ─────────────────────────────────────── */
+.film-card:hover {
+  box-shadow: inset 0 0 0 1px #C8102E;
+}
+
+/* ── Watch link hover ─────────────────────────────────────────── */
+.watch-link:hover {
+  color: #E8005A;
+}
+.watch-link {
+  transition: color 0.2s ease;
+}
+
+/* ── Neon traveling bar around card perimeter ─────────────────── */
+@keyframes neonTravel {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100%; }
 }

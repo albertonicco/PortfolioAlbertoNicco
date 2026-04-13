@@ -120,7 +120,7 @@ body {
   display: inline-block;
   font-family: var(--font-space-mono), 'Courier New', monospace;
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   color: #C8102E;
   text-decoration: none;
   margin-top: 20px;
@@ -130,18 +130,6 @@ body {
   color: #E8005A;
 }
 
-/* ── Portrait oval frame ─────────────────────────────────────── */
-.portrait-frame {
-  position: relative;
-}
-.portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid #C8102E;
-  clip-path: ellipse(46.8% 52% at 50% 50%);
-  pointer-events: none;
-}
 
 /* ── Nav link ─────────────────────────────────────────────────── */
 .nav-item {

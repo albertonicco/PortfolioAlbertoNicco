@@ -70,38 +70,17 @@ export default function Home() {
         {/* Left — photo */}
         <div
           className="relative border-r"
-          style={{
-            borderColor: "#1A1A1A",
-            minHeight: "400px",
-            padding: "32px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          style={{ borderColor: "#1A1A1A", minHeight: "400px" }}
         >
-          <div
-            className="portrait-frame"
-            style={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              minHeight: "336px",
-              filter: "drop-shadow(0 0 12px #C8102E30)",
-            }}
-          >
-            <Image
-              src="/about/photo-home.jpg"
-              alt="Alberto Nicco"
-              fill
-              quality={100}
-              style={{
-                objectFit: "cover",
-                objectPosition: "center top",
-                clipPath: "ellipse(45% 50% at 50% 50%)",
-              }}
-              sizes="(max-width: 768px) 100vw, 40vw"
-            />
-          </div>
+          <Image
+            src="/about/photo-home.jpg"
+            alt="Alberto Nicco"
+            fill
+            quality={100}
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+          <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
         </div>
 
         {/* Right — bio text + links */}
@@ -117,7 +96,7 @@ export default function Home() {
               for brands and digital communication.
             </p>
             <Link href="/contact" className="cta-text-link">
-              Get in touch &rarr;
+              GET IN TOUCH &rarr;
             </Link>
           </div>
 

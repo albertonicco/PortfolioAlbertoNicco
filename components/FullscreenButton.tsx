@@ -1,12 +1,19 @@
 "use client";
 
 export default function FullscreenButton() {
-  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
+  async function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     const container = (e.currentTarget as HTMLElement).closest("[data-video-container]") as HTMLElement | null;
     const video = container?.querySelector("video") as HTMLVideoElement | null;
     const target = video ?? container;
     if (!target) return;
-    if (target.requestFullscreen) target.requestFullscreen();
+    if (target.requestFullscreen) {
+      await target.requestFullscreen();
+      try {
+        await (screen.orientation as ScreenOrientation & { lock?: (o: string) => Promise<void> }).lock?.("landscape");
+      } catch {
+        // orientation lock not supported (iOS Safari, desktop) — ignore
+      }
+    }
   }
 
   return (

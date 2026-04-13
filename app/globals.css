@@ -116,6 +116,23 @@ body {
   color: var(--accent-hover);
 }
 
+.cta-btn {
+  display: inline-block;
+  font-family: var(--font-space-mono), 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F5F0E8;
+  background: #C8102E;
+  padding: 10px 20px;
+  border-radius: 0;
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+.cta-btn:hover {
+  background: #E8005A;
+}
+
 /* ── Nav link ─────────────────────────────────────────────────── */
 .nav-item {
   font-family: var(--font-space-mono), 'Courier New', monospace;

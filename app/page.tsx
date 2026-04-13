@@ -70,24 +70,38 @@ export default function Home() {
         {/* Left — photo */}
         <div
           className="relative border-r"
-          style={{ borderColor: "#1A1A1A", minHeight: "400px" }}
+          style={{ borderColor: "#1A1A1A", minHeight: "400px", padding: "16px" }}
         >
-          <Image
-            src="/about/photo-home.jpg"
-            alt="Alberto Nicco"
-            fill
-            quality={100}
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 40vw"
-          />
-          <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              minHeight: "368px",
+              border: "1px solid #C8102E",
+              outline: "1px solid #C8102E",
+              outlineOffset: "6px",
+              boxShadow: "0 0 20px #C8102E30",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="/about/photo-home.jpg"
+              alt="Alberto Nicco"
+              fill
+              quality={100}
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
+            <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
+          </div>
         </div>
 
         {/* Right — bio text + links */}
         <div className="flex flex-col justify-between px-8 md:px-12 py-12 md:py-16">
           <div>
             <p
-              className="font-serif font-light text-fg mb-5"
+              className="font-serif font-light text-fg mb-8"
               style={{ fontSize: "20px", lineHeight: 1.9, maxWidth: "58ch" }}
             >
               Alberto Nicco is a director, screenwriter, and video editor based in Turin, Italy.
@@ -95,19 +109,14 @@ export default function Home() {
               and aesthetic sensitivity, and has since expanded into the creation of video content
               for brands and digital communication.
             </p>
-            <p
-              className="font-serif font-light text-fg"
-              style={{ fontSize: "20px", lineHeight: 1.9, maxWidth: "58ch" }}
-            >
-              He focuses on the full post-production process, from editing and sound design to the
-              final visual look of the image — working across narrative cinema, documentary, and
-              video content for digital platforms.
-            </p>
+            <Link href="/contact" className="cta-btn">
+              Get in touch &rarr;
+            </Link>
           </div>
 
           <div className="mt-8 flex items-center gap-6">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/alberto_nicco/"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
@@ -116,7 +125,7 @@ export default function Home() {
             </a>
             <span className="meta" style={{ color: "#333" }}>·</span>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/alberto-nicco-b67b692a3"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"

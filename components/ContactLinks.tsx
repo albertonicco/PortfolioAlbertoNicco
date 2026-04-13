@@ -3,8 +3,8 @@
 const contacts = [
   { tag: "[ Email ]",     label: "albertonicco5@gmail.com", href: "mailto:albertonicco5@gmail.com" },
   { tag: "[ Phone ]",     label: "+39 391 491 5298",         href: "tel:+393914915298" },
-  { tag: "[ LinkedIn ]",  label: "Alberto Nicco",             href: "https://linkedin.com" },
-  { tag: "[ Instagram ]", label: "@albertonicco",             href: "https://instagram.com" },
+  { tag: "[ LinkedIn ]",  label: "Alberto Nicco",             href: "https://www.linkedin.com/in/alberto-nicco-b67b692a3" },
+  { tag: "[ Instagram ]", label: "@albertonicco",             href: "https://www.instagram.com/alberto_nicco/" },
 ];
 
 export default function ContactLinks() {

@@ -86,7 +86,7 @@ export default function AboutPage() {
             <div className="mt-10">
               <a
                 href="/cv/alberto-nicco-cv.pdf"
-                download
+                download="CV_Alberto_Nicco.pdf"
                 className="font-mono hover-magenta inline-flex items-center gap-2 transition-colors duration-300"
                 style={{ fontSize: "12px", letterSpacing: "0.1em", color: "#C8102E", textTransform: "uppercase" }}
               >
@@ -98,7 +98,7 @@ export default function AboutPage() {
           {/* Links */}
           <div className="mt-12 flex items-center gap-8">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/alberto_nicco/"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
@@ -107,7 +107,7 @@ export default function AboutPage() {
             </a>
             <span className="meta" style={{ color: "#333" }}>·</span>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/alberto-nicco-b67b692a3"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"

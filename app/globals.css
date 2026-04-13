@@ -116,21 +116,31 @@ body {
   color: var(--accent-hover);
 }
 
-.cta-btn {
+.cta-text-link {
   display: inline-block;
   font-family: var(--font-space-mono), 'Courier New', monospace;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #F5F0E8;
-  background: #C8102E;
-  padding: 10px 20px;
-  border-radius: 0;
-  transition: background 0.2s ease;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #C8102E;
   text-decoration: none;
+  margin-top: 20px;
+  transition: color 0.2s ease;
 }
-.cta-btn:hover {
-  background: #E8005A;
+.cta-text-link:hover {
+  color: #E8005A;
+}
+
+/* ── Portrait oval frame ─────────────────────────────────────── */
+.portrait-frame {
+  position: relative;
+}
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #C8102E;
+  clip-path: ellipse(46.8% 52% at 50% 50%);
+  pointer-events: none;
 }
 
 /* ── Nav link ─────────────────────────────────────────────────── */

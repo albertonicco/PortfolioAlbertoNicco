@@ -70,19 +70,23 @@ export default function Home() {
         {/* Left — photo */}
         <div
           className="relative border-r"
-          style={{ borderColor: "#1A1A1A", minHeight: "400px", padding: "16px" }}
+          style={{
+            borderColor: "#1A1A1A",
+            minHeight: "400px",
+            padding: "32px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <div
+            className="portrait-frame"
             style={{
               position: "relative",
               width: "100%",
               height: "100%",
-              minHeight: "368px",
-              border: "1px solid #C8102E",
-              outline: "1px solid #C8102E",
-              outlineOffset: "6px",
-              boxShadow: "0 0 20px #C8102E30",
-              overflow: "hidden",
+              minHeight: "336px",
+              filter: "drop-shadow(0 0 12px #C8102E30)",
             }}
           >
             <Image
@@ -90,10 +94,13 @@ export default function Home() {
               alt="Alberto Nicco"
               fill
               quality={100}
-              className="object-cover object-top"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+                clipPath: "ellipse(45% 50% at 50% 50%)",
+              }}
               sizes="(max-width: 768px) 100vw, 40vw"
             />
-            <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
           </div>
         </div>
 
@@ -109,7 +116,7 @@ export default function Home() {
               and aesthetic sensitivity, and has since expanded into the creation of video content
               for brands and digital communication.
             </p>
-            <Link href="/contact" className="cta-btn">
+            <Link href="/contact" className="cta-text-link">
               Get in touch &rarr;
             </Link>
           </div>

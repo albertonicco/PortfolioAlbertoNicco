@@ -67,21 +67,21 @@ export default function Home() {
         className="border-t"
         style={{
           borderColor: "#1A1A1A",
-          padding: "48px 32px",
+          padding: "56px 40px",
           display: "flex",
           alignItems: "flex-start",
-          gap: "32px",
+          gap: "40px",
         }}
       >
         {/* Photo */}
-        <div style={{ flexShrink: 0, width: "200px", height: "200px", position: "relative", overflow: "hidden" }}>
+        <div style={{ flexShrink: 0, width: "260px", height: "260px", position: "relative", overflow: "hidden" }}>
           <Image
             src="/about/photo-home.jpg"
             alt="Alberto Nicco"
             fill
             quality={100}
             style={{ objectFit: "cover", objectPosition: "center top" }}
-            sizes="200px"
+            sizes="260px"
           />
         </div>
 
@@ -91,15 +91,11 @@ export default function Home() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontWeight: 300,
-              fontSize: "17px",
-              lineHeight: 1.7,
+              fontSize: "19px",
+              lineHeight: 1.75,
               color: "#999999",
               maxWidth: "60ch",
-              marginBottom: "16px",
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              marginBottom: "20px",
             }}
           >
             Alberto Nicco is a director, screenwriter, and video editor based in Turin, Italy.

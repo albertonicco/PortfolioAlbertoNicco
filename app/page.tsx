@@ -62,26 +62,26 @@ export default function Home() {
         <FullscreenButton />
       </section>
 
-      {/* ── Bio section — compact strip ── */}
+      {/* ── Bio section ── */}
       <section
         className="border-t"
         style={{
           borderColor: "#1A1A1A",
-          padding: "24px 32px",
+          padding: "48px 32px",
           display: "flex",
-          alignItems: "center",
-          gap: "20px",
+          alignItems: "flex-start",
+          gap: "32px",
         }}
       >
-        {/* Photo — small square */}
-        <div style={{ flexShrink: 0, width: "120px", height: "120px", position: "relative", overflow: "hidden" }}>
+        {/* Photo */}
+        <div style={{ flexShrink: 0, width: "200px", height: "200px", position: "relative", overflow: "hidden" }}>
           <Image
             src="/about/photo-home.jpg"
             alt="Alberto Nicco"
             fill
             quality={100}
             style={{ objectFit: "cover", objectPosition: "center top" }}
-            sizes="120px"
+            sizes="200px"
           />
         </div>
 
@@ -91,13 +91,13 @@ export default function Home() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontWeight: 300,
-              fontSize: "14px",
-              lineHeight: 1.5,
+              fontSize: "17px",
+              lineHeight: 1.7,
               color: "#999999",
               maxWidth: "60ch",
-              marginBottom: "10px",
+              marginBottom: "16px",
               display: "-webkit-box",
-              WebkitLineClamp: 2,
+              WebkitLineClamp: 3,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
             }}
@@ -107,27 +107,24 @@ export default function Home() {
             and aesthetic sensitivity, and has since expanded into the creation of video content
             for brands and digital communication.
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
-            <Link href="/contact" className="cta-text-link" style={{ marginTop: 0, fontSize: "12px" }}>
-              GET IN TOUCH &rarr;
-            </Link>
-            <span style={{ color: "#333", fontFamily: "var(--font-space-mono), monospace", fontSize: "11px" }}>·</span>
+          <Link href="/contact" className="cta-text-link" style={{ marginTop: 0, display: "block", marginBottom: "12px" }}>
+            GET IN TOUCH &rarr;
+          </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <a
               href="https://www.instagram.com/alberto_nicco/"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
-              style={{ fontSize: "11px" }}
             >
               Instagram
             </a>
-            <span style={{ color: "#333", fontFamily: "var(--font-space-mono), monospace", fontSize: "11px" }}>·</span>
+            <span className="meta" style={{ color: "#333" }}>·</span>
             <a
               href="https://www.linkedin.com/in/alberto-nicco-b67b692a3"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
-              style={{ fontSize: "11px" }}
             >
               LinkedIn
             </a>

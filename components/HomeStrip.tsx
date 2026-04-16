@@ -77,9 +77,12 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
         <ArrowButton onClick={prev} direction="left" disabled={current === 0} />
 
         {/* Outer pulsing glow container */}
-        <div className="neon-pulse" style={{ flex: 1, position: "relative" }}>
+        <div
+          className="neon-pulse"
+          style={{ width: "min(60vw, 400px)", margin: "0 auto", position: "relative" }}
+        >
           {/* Card */}
-          <div style={{ overflow: "hidden", position: "relative", height: "500px" }}>
+          <div style={{ overflow: "hidden", position: "relative" }}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={item.slug}
@@ -87,7 +90,6 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: direction > 0 ? "-100%" : "100%", opacity: 0 }}
                 transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
-                style={{ height: "100%" }}
               >
                 <Link
                   href={item.href}
@@ -95,9 +97,8 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
                   style={{
                     display: "block",
                     position: "relative",
-                    height: "100%",
+                    paddingBottom: "133%",
                     border: "1px solid #1A1A1A",
-                    background: "#000",
                   }}
                   draggable={false}
                   aria-label={`${item.title}, ${item.year}`}
@@ -108,10 +109,10 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
                     fill
                     quality={100}
                     style={{
-                      objectFit: "contain",
-                      objectPosition: "center",
+                      objectFit: "cover",
+                      objectPosition: "center top",
                     }}
-                    sizes="min(900px, 90vw)"
+                    sizes="min(60vw, 400px)"
                     priority={current === 0}
                   />
 

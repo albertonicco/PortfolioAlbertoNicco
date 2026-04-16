@@ -25,7 +25,7 @@ export const videoProjects: VideoProject[] = [
   {
     slug: "wedding",
     title: "Wedding Film",
-    year: 2023,
+    year: 2025,
     role: "Videomaker · Editor · Colorist",
     approach: "Documentary wedding filmmaking",
     noTrailer: true,

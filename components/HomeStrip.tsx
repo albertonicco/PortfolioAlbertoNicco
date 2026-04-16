@@ -64,7 +64,7 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
   const item = items4[current];
 
   return (
-    <div style={{ padding: "2rem 1.5rem" }}>
+    <div style={{ padding: "1.5rem" }}>
       <div
         style={{
           maxWidth: "900px",
@@ -79,7 +79,7 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
         {/* Outer pulsing glow container */}
         <div className="neon-pulse" style={{ flex: 1, position: "relative" }}>
           {/* Card */}
-          <div style={{ overflow: "hidden", position: "relative" }}>
+          <div style={{ overflow: "hidden", position: "relative", height: "500px" }}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={item.slug}
@@ -87,26 +87,29 @@ export default function HomeStrip({ items }: { items: StripItem[] }) {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: direction > 0 ? "-100%" : "100%", opacity: 0 }}
                 transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+                style={{ height: "100%" }}
               >
                 <Link
                   href={item.href}
                   className="film-card"
-                  style={{ display: "block", position: "relative", border: "1px solid #1A1A1A" }}
+                  style={{
+                    display: "block",
+                    position: "relative",
+                    height: "100%",
+                    border: "1px solid #1A1A1A",
+                    background: "#000",
+                  }}
                   draggable={false}
                   aria-label={`${item.title}, ${item.year}`}
                 >
                   <Image
                     src={item.poster}
                     alt={item.title}
-                    width={900}
-                    height={1300}
+                    fill
                     quality={100}
                     style={{
-                      width: "100%",
-                      height: "auto",
-                      display: "block",
                       objectFit: "contain",
-                      objectPosition: "center top",
+                      objectPosition: "center",
                     }}
                     sizes="min(900px, 90vw)"
                     priority={current === 0}

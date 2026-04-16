@@ -62,59 +62,72 @@ export default function Home() {
         <FullscreenButton />
       </section>
 
-      {/* ── Bio section ── */}
+      {/* ── Bio section — compact strip ── */}
       <section
-        className="grid grid-cols-1 md:grid-cols-[2fr_3fr] border-t"
-        style={{ borderColor: "#1A1A1A" }}
+        className="border-t"
+        style={{
+          borderColor: "#1A1A1A",
+          padding: "24px 32px",
+          display: "flex",
+          alignItems: "center",
+          gap: "20px",
+        }}
       >
-        {/* Left — photo */}
-        <div
-          className="relative border-r"
-          style={{ borderColor: "#1A1A1A", minHeight: "400px" }}
-        >
+        {/* Photo — small square */}
+        <div style={{ flexShrink: 0, width: "120px", height: "120px", position: "relative", overflow: "hidden" }}>
           <Image
             src="/about/photo-home.jpg"
             alt="Alberto Nicco"
             fill
             quality={100}
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 40vw"
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+            sizes="120px"
           />
-          <div className="absolute inset-0 bg-[#0d0d0d]" style={{ zIndex: -1 }} />
         </div>
 
-        {/* Right — bio text + links */}
-        <div className="flex flex-col justify-between px-8 md:px-12 py-12 md:py-16">
-          <div>
-            <p
-              className="font-serif font-light text-fg mb-8"
-              style={{ fontSize: "20px", lineHeight: 1.9, maxWidth: "58ch" }}
-            >
-              Alberto Nicco is a director, screenwriter, and video editor based in Turin, Italy.
-              His path originates in cinema and documentary filmmaking, where he developed narrative
-              and aesthetic sensitivity, and has since expanded into the creation of video content
-              for brands and digital communication.
-            </p>
-            <Link href="/contact" className="cta-text-link">
+        {/* Text + links */}
+        <div style={{ flex: 1 }}>
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontWeight: 300,
+              fontSize: "14px",
+              lineHeight: 1.5,
+              color: "#999999",
+              maxWidth: "60ch",
+              marginBottom: "10px",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            Alberto Nicco is a director, screenwriter, and video editor based in Turin, Italy.
+            His path originates in cinema and documentary filmmaking, where he developed narrative
+            and aesthetic sensitivity, and has since expanded into the creation of video content
+            for brands and digital communication.
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+            <Link href="/contact" className="cta-text-link" style={{ marginTop: 0, fontSize: "12px" }}>
               GET IN TOUCH &rarr;
             </Link>
-          </div>
-
-          <div className="mt-8 flex items-center gap-6">
+            <span style={{ color: "#333", fontFamily: "var(--font-space-mono), monospace", fontSize: "11px" }}>·</span>
             <a
               href="https://www.instagram.com/alberto_nicco/"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
+              style={{ fontSize: "11px" }}
             >
               Instagram
             </a>
-            <span className="meta" style={{ color: "#333" }}>·</span>
+            <span style={{ color: "#333", fontFamily: "var(--font-space-mono), monospace", fontSize: "11px" }}>·</span>
             <a
               href="https://www.linkedin.com/in/alberto-nicco-b67b692a3"
               target="_blank"
               rel="noopener noreferrer"
               className="meta hover-magenta"
+              style={{ fontSize: "11px" }}
             >
               LinkedIn
             </a>
